@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://efqm44ar5vot"]
+
+[ext_resource type="Script" path="res://src/autoload/GameManager/game_manger.gd" id="1_27lcf"]
+
+[sub_resource type="Curve" id="Curve_f3sop"]
+max_value = 2.5
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 2.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="GameManger" type="Node"]
+script = ExtResource("1_27lcf")
+difficulty_climax = 5000.0
+difficulty_curve = SubResource("Curve_f3sop")

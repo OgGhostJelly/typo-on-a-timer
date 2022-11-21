@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/autoload/BackgroundAudio/background_audio.gd" id="1_cmo7u"]
+[ext_resource type="AudioStream" uid="uid://bha6q02tw55ak" path="res://assets/audio/background_music/Pleasant Porridge.mp3" id="2_soh5o"]
+
+[node name="BackgroundAudio" type="Node"]
+script = ExtResource("1_cmo7u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_soh5o")
+autoplay = true
+bus = &"Background"

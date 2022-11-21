@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ben4bvtrj3tti"]
+
+[ext_resource type="Script" path="res://src/MulticoloredLabel/multicolored_label.gd" id="1_ey847"]
+
+[node name="MulticoloredLabel" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+script = ExtResource("1_ey847")

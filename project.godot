@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "HBoxContainer",
+"class": &"MulticoloredLabel",
+"language": &"GDScript",
+"path": "res://src/MulticoloredLabel/multicolored_label.gd"
+}]
+_global_script_class_icons={
+"MulticoloredLabel": ""
+}
+
+[application]
+
+config/name="typo on a timer"
+run/main_scene="res://src/MainMenu/main_menu.tscn"
+config/features=PackedStringArray("4.0", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+BackgroundAudio="*res://src/autoload/BackgroundAudio/background_audio.tscn"
+GameManger="*res://src/autoload/GameManager/game_manger.tscn"
+
+[rendering]
+
+renderer/rendering_method="mobile"

@@ -1,0 +1,415 @@
+[gd_scene load_steps=22 format=3 uid="uid://dn3qavd8mr3e"]
+
+[ext_resource type="Theme" uid="uid://kb36dsbymjso" path="res://assets/themes/default_theme.tres" id="1_n06n5"]
+[ext_resource type="Script" path="res://src/Game/typing.gd" id="2_jsvv8"]
+[ext_resource type="Texture2D" uid="uid://cb0t0717u66jh" path="res://assets/pattern.png" id="3_4jl2m"]
+[ext_resource type="AudioStream" uid="uid://35113ycgbb8g" path="res://assets/audio/type_audio/type/type0.mp3" id="4_hs23o"]
+[ext_resource type="AudioStream" uid="uid://1lg03jja76hi" path="res://assets/audio/type_audio/correct.mp3" id="4_swjcc"]
+[ext_resource type="AudioStream" uid="uid://lcubmiyidjwn" path="res://assets/audio/type_audio/type/type1.mp3" id="5_eo7om"]
+[ext_resource type="AudioStream" uid="uid://cb0ujllfblh7n" path="res://assets/audio/type_audio/type/type2.mp3" id="6_sso31"]
+[ext_resource type="AudioStream" uid="uid://bynh4q0ohxfma" path="res://assets/audio/type_audio/type/type3.mp3" id="7_hg4u8"]
+[ext_resource type="AudioStream" uid="uid://cbqf2gpd50y0v" path="res://assets/audio/type_audio/error/error0.mp3" id="8_2dsn6"]
+[ext_resource type="AudioStream" uid="uid://6qlwtb75w8jf" path="res://assets/audio/type_audio/type/type4.mp3" id="10_bx515"]
+[ext_resource type="AudioStream" uid="uid://7moj4m0ooocn" path="res://assets/audio/type_audio/type/type5.mp3" id="11_1ee5e"]
+[ext_resource type="AudioStream" uid="uid://cmk54hw6sgmaj" path="res://assets/audio/beep.mp3" id="12_4mjq8"]
+[ext_resource type="Script" path="res://src/Game/info.gd" id="14_dq442"]
+[ext_resource type="AudioStream" uid="uid://6q5kxrcmuijp" path="res://assets/audio/game_start.mp3" id="14_kxj80"]
+
+[sub_resource type="Animation" id="Animation_qn5ku"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Typing/Countdown:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Typing/Countdown:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Typing/Countdown:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Typing/Countdown:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_drnq1"]
+resource_name = "correct"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Typing/Countdown:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Typing/Countdown:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["CORRECT!"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Typing/Countdown:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Typing/Countdown:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_co7ip"]
+resource_name = "start"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Typing/Countdown:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1", "TIPE!"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Typing/Countdown:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.1, 3.2, 3.3, 3.4, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Typing/Countdown:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 3),
+"transitions": PackedFloat32Array(-2, 1e+06, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Typing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_game"
+}]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Typing/CountdownAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_4mjq8")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_4mjq8")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_kxj80")
+}],
+"times": PackedFloat32Array(1, 2, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_slvqk"]
+_data = {
+"RESET": SubResource("Animation_qn5ku"),
+"correct": SubResource("Animation_drnq1"),
+"start": SubResource("Animation_co7ip")
+}
+
+[sub_resource type="Animation" id="Animation_gku3f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4cixb"]
+resource_name = "start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mye36"]
+_data = {
+"RESET": SubResource("Animation_gku3f"),
+"start": SubResource("Animation_4cixb")
+}
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_n06n5")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -126.0
+offset_right = 224.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4jl2m")
+
+[node name="Typing" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_jsvv8")
+
+[node name="Countdown" type="Label" parent="Typing"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -33.5
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+text = "3"
+horizontal_alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="Typing"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 308.0
+offset_right = 576.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]abc[/center]"
+fit_content_height = true
+autowrap_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Typing"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_slvqk")
+}
+
+[node name="Particles2D" type="CPUParticles2D" parent="Typing"]
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+randomness = 0.2
+lifetime_randomness = 0.3
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -300)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+radial_accel_min = 10.0
+radial_accel_max = 10.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+
+[node name="TypeAudio" type="Node" parent="Typing"]
+
+[node name="Type" type="Node" parent="Typing/TypeAudio"]
+
+[node name="0" type="AudioStreamPlayer" parent="Typing/TypeAudio/Type"]
+stream = ExtResource("4_hs23o")
+bus = &"Type"
+
+[node name="1" type="AudioStreamPlayer" parent="Typing/TypeAudio/Type"]
+stream = ExtResource("5_eo7om")
+bus = &"Type"
+
+[node name="2" type="AudioStreamPlayer" parent="Typing/TypeAudio/Type"]
+stream = ExtResource("6_sso31")
+bus = &"Type"
+
+[node name="3" type="AudioStreamPlayer" parent="Typing/TypeAudio/Type"]
+stream = ExtResource("7_hg4u8")
+bus = &"Type"
+
+[node name="4" type="AudioStreamPlayer" parent="Typing/TypeAudio/Type"]
+stream = ExtResource("10_bx515")
+bus = &"Type"
+
+[node name="5" type="AudioStreamPlayer" parent="Typing/TypeAudio/Type"]
+stream = ExtResource("11_1ee5e")
+bus = &"Type"
+
+[node name="Error" type="Node" parent="Typing/TypeAudio"]
+
+[node name="0" type="AudioStreamPlayer" parent="Typing/TypeAudio/Error"]
+stream = ExtResource("8_2dsn6")
+bus = &"Type"
+
+[node name="Correct" type="AudioStreamPlayer" parent="Typing/TypeAudio"]
+stream = ExtResource("4_swjcc")
+bus = &"Type"
+
+[node name="CountdownAudio" type="AudioStreamPlayer" parent="Typing"]
+stream = ExtResource("12_4mjq8")
+
+[node name="Info" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_dq442")
+
+[node name="Detail" type="VBoxContainer" parent="Info"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 212.0
+offset_bottom = 102.0
+
+[node name="Score" type="Label" parent="Info/Detail"]
+layout_mode = 2
+offset_left = 75.0
+offset_right = 107.0
+offset_bottom = 35.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+horizontal_alignment = 1
+
+[node name="LifeMeter" type="ProgressBar" parent="Info/Detail"]
+layout_mode = 2
+offset_top = 39.0
+offset_right = 182.0
+offset_bottom = 43.0
+grow_horizontal = 2
+show_percentage = false
+
+[node name="HighScore" type="Label" parent="Info/Detail"]
+layout_mode = 2
+offset_top = 47.0
+offset_right = 182.0
+offset_bottom = 82.0
+text = "HI 0"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Info"]
+libraries = {
+"": SubResource("AnimationLibrary_mye36")
+}
