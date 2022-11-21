@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"MulticoloredLabel",
 "language": &"GDScript",
 "path": "res://src/MulticoloredLabel/multicolored_label.gd"
+}, {
+"base": "RichTextEffect",
+"class": &"RichTextCorrect",
+"language": &"GDScript",
+"path": "res://src/Game/RichTextCorrect.gd"
 }]
 _global_script_class_icons={
-"MulticoloredLabel": ""
+"MulticoloredLabel": "",
+"RichTextCorrect": ""
 }
 
 [application]

@@ -141,6 +141,7 @@ grow_vertical = 2
 texture = ExtResource("3_a5y2y")
 
 [node name="Top" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
@@ -151,30 +152,34 @@ offset_bottom = 124.0
 grow_horizontal = 2
 
 [node name="Title" type="Label" parent="Top"]
-offset_right = 458.0
+layout_mode = 2
+offset_right = 611.0
 offset_bottom = 35.0
 grow_horizontal = 2
 text = "TYPO ON A TIMER"
 horizontal_alignment = 1
 
 [node name="By" type="Label" parent="Top"]
+layout_mode = 2
 offset_top = 39.0
-offset_right = 458.0
-offset_bottom = 56.0
-theme_override_font_sizes/font_size = 12
+offset_right = 611.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 16
 text = "made by OgGhostJelly"
 horizontal_alignment = 1
 
 [node name="Music By" type="Label" parent="Top"]
-offset_top = 60.0
-offset_right = 458.0
-offset_bottom = 77.0
+layout_mode = 2
+offset_top = 65.0
+offset_right = 611.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 text = "music by Kevin Macleod incompetech.com"
 
 [node name="Middle" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
@@ -190,6 +195,7 @@ alignment = 1
 
 [node name="StartButton" type="Button" parent="Middle"]
 unique_name_in_owner = true
+layout_mode = 2
 offset_right = 168.0
 offset_bottom = 40.0
 focus_mode = 0

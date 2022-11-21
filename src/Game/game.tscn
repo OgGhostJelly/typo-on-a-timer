@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dn3qavd8mr3e"]
+[gd_scene load_steps=24 format=3 uid="uid://dn3qavd8mr3e"]
 
 [ext_resource type="Theme" uid="uid://kb36dsbymjso" path="res://assets/themes/default_theme.tres" id="1_n06n5"]
 [ext_resource type="Script" path="res://src/Game/typing.gd" id="2_jsvv8"]
 [ext_resource type="Texture2D" uid="uid://cb0t0717u66jh" path="res://assets/pattern.png" id="3_4jl2m"]
+[ext_resource type="Script" path="res://src/Game/RichTextCorrect.gd" id="4_b1ag2"]
 [ext_resource type="AudioStream" uid="uid://35113ycgbb8g" path="res://assets/audio/type_audio/type/type0.mp3" id="4_hs23o"]
 [ext_resource type="AudioStream" uid="uid://1lg03jja76hi" path="res://assets/audio/type_audio/correct.mp3" id="4_swjcc"]
 [ext_resource type="AudioStream" uid="uid://lcubmiyidjwn" path="res://assets/audio/type_audio/type/type1.mp3" id="5_eo7om"]
@@ -14,6 +15,9 @@
 [ext_resource type="AudioStream" uid="uid://cmk54hw6sgmaj" path="res://assets/audio/beep.mp3" id="12_4mjq8"]
 [ext_resource type="Script" path="res://src/Game/info.gd" id="14_dq442"]
 [ext_resource type="AudioStream" uid="uid://6q5kxrcmuijp" path="res://assets/audio/game_start.mp3" id="14_kxj80"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_111yb"]
+script = ExtResource("4_b1ag2")
 
 [sub_resource type="Animation" id="Animation_qn5ku"]
 length = 0.001
@@ -64,6 +68,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Typing/Text:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_drnq1"]
@@ -193,6 +209,18 @@ tracks/4/keys = {
 }],
 "times": PackedFloat32Array(1, 2, 3)
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Typing/Text:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_slvqk"]
 _data = {
@@ -288,6 +316,7 @@ text = "3"
 horizontal_alignment = 1
 
 [node name="Text" type="RichTextLabel" parent="Typing"]
+visible = false
 layout_mode = 0
 offset_left = 576.0
 offset_top = 308.0
@@ -296,34 +325,16 @@ offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[center]abc[/center]"
+text = "[correct]hhhhh[/correct]"
 fit_content_height = true
 autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_111yb")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Typing"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_slvqk")
 }
-
-[node name="Particles2D" type="CPUParticles2D" parent="Typing"]
-emitting = false
-amount = 10
-lifetime = 0.2
-one_shot = true
-randomness = 0.2
-lifetime_randomness = 0.3
-direction = Vector2(0, -1)
-spread = 180.0
-gravity = Vector2(0, -300)
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-angular_velocity_min = 100.0
-angular_velocity_max = 100.0
-radial_accel_min = 10.0
-radial_accel_max = 10.0
-scale_amount_min = 10.0
-scale_amount_max = 10.0
 
 [node name="TypeAudio" type="Node" parent="Typing"]
 
