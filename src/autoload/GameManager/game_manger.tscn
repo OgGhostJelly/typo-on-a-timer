@@ -4,8 +4,8 @@
 
 [sub_resource type="Curve" id="Curve_f3sop"]
 max_value = 2.5
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 2.5), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 2.5), 7.53588, 0.0, 0, 0]
+point_count = 3
 
 [node name="GameManger" type="Node"]
 script = ExtResource("1_27lcf")

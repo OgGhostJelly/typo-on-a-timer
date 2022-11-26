@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dyljd3obnf5kf"
-path="res://.godot/imported/Nabla-Regular-VariableFont_EDPT,EHLT.ttf-95d5d618ab2ec310ef81f0a5c37ef1f5.fontdata"
+uid="uid://dwdqtxeywwvtl"
+path="res://.godot/imported/Undertale.otf-2068f08936df71354b4bc9dbbdcd0238.fontdata"
 
 [deps]
 
-source_file="res://assets/themes/Nabla-Regular-VariableFont_EDPT,EHLT.ttf"
-dest_files=["res://.godot/imported/Nabla-Regular-VariableFont_EDPT,EHLT.ttf-95d5d618ab2ec310ef81f0a5c37ef1f5.fontdata"]
+source_file="res://assets/fonts/Undertale.otf"
+dest_files=["res://.godot/imported/Undertale.otf-2068f08936df71354b4bc9dbbdcd0238.fontdata"]
 
 [params]
 

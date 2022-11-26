@@ -1,15 +1,13 @@
 extends Node
 
 signal game_started
-signal game_ended
+signal reset_score
 
 signal difficulty_climax_changed
 signal life_max_changed
-signal life_increase_changed
 signal score_increase_changed
 signal score_decrease_changed
 
-signal difficulty_changed
 signal life_changed
 signal score_changed
 signal high_score_changed
@@ -17,7 +15,6 @@ signal high_score_changed
 var is_game_started: bool = false
 
 @export var life_max: float = 3.0: set = _on_life_max_changed
-@export var life_increase: float = 0.5: set = _on_life_increase_changed
 @export var score_increase: float = 10.0: set = _on_score_increase_changed
 @export var score_decrease: float = 50.0: set = _on_score_decrease_changed
 @export var difficulty_climax: float = 1000.0: set = _on_difficulty_climax_changed
@@ -33,17 +30,14 @@ func start_game() -> void:
 	game_started.emit()
 
 
-func end_game() -> void:
-	is_game_started = false
-	game_ended.emit()
-
-
 func _process(delta: float) -> void:
 	if is_game_started:
 		self.life -= delta * difficulty_curve.sample(score / difficulty_climax)
 		
 		if life <= 0:
 			self.score = 0
+			
+			reset_score.emit()
 
 
 func increase_life() -> void:
@@ -81,11 +75,6 @@ func _on_high_score_changed(value: int) -> void:
 func _on_life_max_changed(value: float) -> void:
 	life_max = value
 	life_max_changed.emit()
-
-
-func _on_life_increase_changed(value: float) -> void:
-	life_increase = value
-	life_increase_changed.emit()
 
 
 func _on_score_increase_changed(value: float) -> void:

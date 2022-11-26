@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dn3qavd8mr3e"]
+[gd_scene load_steps=26 format=3 uid="uid://dn3qavd8mr3e"]
 
-[ext_resource type="Theme" uid="uid://kb36dsbymjso" path="res://assets/themes/default_theme.tres" id="1_n06n5"]
+[ext_resource type="Theme" uid="uid://b8f0enewhl0y3" path="res://assets/themes/default_theme.tres" id="1_n06n5"]
 [ext_resource type="Script" path="res://src/Game/typing.gd" id="2_jsvv8"]
 [ext_resource type="Texture2D" uid="uid://cb0t0717u66jh" path="res://assets/pattern.png" id="3_4jl2m"]
 [ext_resource type="Script" path="res://src/Game/RichTextCorrect.gd" id="4_b1ag2"]
@@ -15,9 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://cmk54hw6sgmaj" path="res://assets/audio/beep.mp3" id="12_4mjq8"]
 [ext_resource type="Script" path="res://src/Game/info.gd" id="14_dq442"]
 [ext_resource type="AudioStream" uid="uid://6q5kxrcmuijp" path="res://assets/audio/game_start.mp3" id="14_kxj80"]
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_111yb"]
-script = ExtResource("4_b1ag2")
 
 [sub_resource type="Animation" id="Animation_qn5ku"]
 length = 0.001
@@ -229,6 +226,19 @@ _data = {
 "start": SubResource("Animation_co7ip")
 }
 
+[sub_resource type="RichTextEffect" id="RichTextEffect_111yb"]
+script = ExtResource("4_b1ag2")
+
+[sub_resource type="Curve" id="Curve_rq0vw"]
+min_value = 1.0
+max_value = 6.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 6), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ln5nq"]
+offsets = PackedFloat32Array(0, 0.992857)
+colors = PackedColorArray(1, 1, 0, 0.247059, 1, 1, 0, 0.498039)
+
 [sub_resource type="Animation" id="Animation_gku3f"]
 length = 0.001
 tracks/0/type = "value"
@@ -307,28 +317,13 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -33.5
-offset_bottom = 46.5
+offset_bottom = 33.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 56
 text = "3"
 horizontal_alignment = 1
-
-[node name="Text" type="RichTextLabel" parent="Typing"]
-visible = false
-layout_mode = 0
-offset_left = 576.0
-offset_top = 308.0
-offset_right = 576.0
-offset_bottom = 340.0
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[correct]hhhhh[/correct]"
-fit_content_height = true
-autowrap_mode = 0
-custom_effects = [SubResource("RichTextEffect_111yb")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Typing"]
 root_node = NodePath("../..")
@@ -377,6 +372,22 @@ bus = &"Type"
 [node name="CountdownAudio" type="AudioStreamPlayer" parent="Typing"]
 stream = ExtResource("12_4mjq8")
 
+[node name="Text" type="RichTextLabel" parent="Typing"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+bbcode_enabled = true
+fit_content_height = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_111yb")]
+
 [node name="Info" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -386,6 +397,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_dq442")
+
+[node name="Center" type="CenterContainer" parent="Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Particles2D" type="CPUParticles2D" parent="Info/Center"]
+position = Vector2(16, 2)
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+lifetime_randomness = 0.2
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = 500.0
+angular_velocity_max = 500.0
+linear_accel_min = 1000.0
+linear_accel_max = 1000.0
+radial_accel_min = 980.0
+radial_accel_max = 980.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_rq0vw")
 
 [node name="Detail" type="VBoxContainer" parent="Info"]
 layout_mode = 0
@@ -420,7 +464,49 @@ offset_bottom = 82.0
 text = "HI 0"
 horizontal_alignment = 1
 
+[node name="Center" type="CenterContainer" parent="Info/Detail/HighScore"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HighScoreParticles" type="CPUParticles2D" parent="Info/Detail/HighScore/Center"]
+emitting = false
+amount = 32
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_rect_extents = Vector2(50, 1)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = 500.0
+angular_velocity_max = 500.0
+linear_accel_min = 1.0
+linear_accel_max = 100.0
+radial_accel_min = 980.0
+radial_accel_max = 980.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_rq0vw")
+color = Color(1, 1, 0, 0.247059)
+color_ramp = SubResource("Gradient_ln5nq")
+
+[node name="HighScoreAudio" type="AudioStreamPlayer" parent="Info/Detail/HighScore"]
+stream = ExtResource("4_swjcc")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Info"]
 libraries = {
 "": SubResource("AnimationLibrary_mye36")
 }
+
+[node name="ResetScoreAudio" type="AudioStreamPlayer" parent="Info"]
+stream = ExtResource("8_2dsn6")

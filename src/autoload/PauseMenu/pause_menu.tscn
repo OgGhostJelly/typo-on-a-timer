@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmem6lf1yyoe8"]
+
+[ext_resource type="Script" path="res://src/autoload/PauseMenu/pause_menu.gd" id="1_1i5tf"]
+[ext_resource type="Theme" uid="uid://b8f0enewhl0y3" path="res://assets/themes/default_theme.tres" id="2_xgb73"]
+[ext_resource type="FontFile" uid="uid://8aomjiwim2x2" path="res://assets/fonts/HachicroUndertaleBattle.ttf" id="3_kkgvw"]
+[ext_resource type="FontFile" uid="uid://dwdqtxeywwvtl" path="res://assets/fonts/Undertale.otf" id="4_qng8r"]
+
+[node name="Frontground" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_1i5tf")
+default_theme = ExtResource("2_xgb73")
+fonts = {
+"PIXEL": [ExtResource("4_qng8r"), 48],
+"SQUARE": [ExtResource("3_kkgvw"), 28]
+}
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xgb73")
+
+[node name="CanvasModulate" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.745098)
+
+[node name="Title" type="Label" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -305.0
+offset_top = 66.0
+offset_right = 306.0
+offset_bottom = 101.0
+grow_horizontal = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Middle" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="SoundHBC" type="HBoxContainer" parent="PauseMenu/Middle"]
+layout_mode = 2
+offset_right = 196.0
+offset_bottom = 55.0
+alignment = 1
+
+[node name="SoundVBC" type="VBoxContainer" parent="PauseMenu/Middle/SoundHBC"]
+layout_mode = 2
+offset_right = 160.0
+offset_bottom = 55.0
+
+[node name="SoundLabel" type="Label" parent="PauseMenu/Middle/SoundHBC/SoundVBC"]
+layout_mode = 2
+offset_right = 160.0
+offset_bottom = 35.0
+text = "SOUND"
+
+[node name="SoundSlider" type="HSlider" parent="PauseMenu/Middle/SoundHBC/SoundVBC"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 39.0
+offset_right = 160.0
+offset_bottom = 55.0
+min_value = -6.0
+max_value = 6.0
+step = 0.1
+
+[node name="SoundDefaultButton" type="Button" parent="PauseMenu/Middle/SoundHBC"]
+layout_mode = 2
+offset_left = 164.0
+offset_right = 196.0
+offset_bottom = 55.0
+focus_mode = 0
+text = "o"
+
+[node name="FontButton" type="Button" parent="PauseMenu/Middle"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 95.0
+offset_right = 196.0
+offset_bottom = 159.0
+focus_mode = 0
+text = "FONT:
+%s"
+
+[connection signal="drag_ended" from="PauseMenu/Middle/SoundHBC/SoundVBC/SoundSlider" to="." method="_on_sound_slider_drag_ended"]
+[connection signal="pressed" from="PauseMenu/Middle/SoundHBC/SoundDefaultButton" to="." method="_on_sound_default_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Middle/FontButton" to="." method="_on_font_button_pressed"]

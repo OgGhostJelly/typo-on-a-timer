@@ -9,10 +9,10 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "HBoxContainer",
-"class": &"MulticoloredLabel",
+"base": "Label",
+"class": &"Footer",
 "language": &"GDScript",
-"path": "res://src/MulticoloredLabel/multicolored_label.gd"
+"path": "res://src/footer.gd"
 }, {
 "base": "RichTextEffect",
 "class": &"RichTextCorrect",
@@ -20,7 +20,7 @@ _global_script_classes=[{
 "path": "res://src/Game/RichTextCorrect.gd"
 }]
 _global_script_class_icons={
-"MulticoloredLabel": "",
+"Footer": "",
 "RichTextCorrect": ""
 }
 
@@ -35,6 +35,11 @@ config/icon="res://icon.svg"
 
 BackgroundAudio="*res://src/autoload/BackgroundAudio/background_audio.tscn"
 GameManger="*res://src/autoload/GameManager/game_manger.tscn"
+PauseMenu="*res://src/autoload/PauseMenu/pause_menu.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [rendering]
 

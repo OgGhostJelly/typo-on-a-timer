@@ -22,6 +22,9 @@ func start_game() -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if not GameManger.is_game_started:
+		return
+	
 	update_typed_word(event)
 	update_text()
 	
@@ -47,14 +50,13 @@ func update_typed_word(event: InputEvent) -> void:
 	
 	if char(event.unicode).is_empty():
 		return
-	#add back particles
-	#add back correct on complete
-	#add back correct audio
+	if typed_word.has(null):
+		return
+	
 	if char(event.unicode) == word[typed_word.size()]:
 		type_audio.pick_random().play()
 		typed_word.append(char(event.unicode))
-		if not typed_word.has(null):
-			GameManger.increase_score()
+		GameManger.increase_score()
 	else:
 		error_audio.pick_random().play()
 		typed_word.append(null)
